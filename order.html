@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="LØMEN — Precision engineered embroidery. Digital mastery meets physical form.">
+      <title>LØMEN | Home</title>
+      
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600&display=swap" rel="stylesheet">
+      
+      <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="load2ing home-page"> <a href="#main-content" class="skip-link">Skip to main content</a>
+
+      <div id="loader" role="status" aria-live="polite">
+          <span class="loader-logo">LØMEN</span>
+      </div>
+
+      <header class="site-header" role="banner">
+          <div class="nav-container">
+              <a href="index.html" class="nav-logo" aria-label="LØMEN Home">LØMEN</a>
+              
+              <button class="nav-toggle" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+    
+              </button>
+              
+              <nav class="main-nav" aria-label="Primary Navigation">
+                  <ul class="nav-list">
+                      <li><a href="archive.html" class="nav-link">Archive</a></li>
+                      <li><a href="identity.html" class="nav-link">Identity</a></li>
+                      <li><a href="protocol.html" class="nav-link">Protocol</a></li>
+                      <li><a href="order.html" class="nav-link" id="orderlink">Order</a></li>
+                  </ul>
+              </nav>
+          </div>
+      </header>
+
+        <main id="main-content">
+            <div class="order-main">
+                <!-- Order Header -->
+                <div class="order-header">
+                    <h1 class="order-title">Order</h1>
+                    <p class="order-subtitle">For custom commissions, contact directly via <a href="mailto:contact@lomen.com">contact@lomen.com</a></p>
+                </div>
+
+                <!-- Product Display (hidden until product is selected) -->
+                <div class="product-display" id="productDisplay">
+                    <div class="product-preview">
+                        <img id="productImage" class="product-image" src="" alt="Selected product">
+                        <div class="product-details">
+                            <h3 id="productName">Product Name</h3>
+                            <div class="product-ref" id="productRef">REF_XXXX_XXX</div>
+                            <div class="product-price" id="productPrice">— $0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Validation Message -->
+                <div class="validation-message" id="validationMessage" style="display: none;">
+                    <span class="validation-icon">!</span>
+                    <span class="validation-text">Please complete all required fields marked with *</span>
+                </div>
+
+                <!-- Google Form -->
+                <form id="orderForm" action="https://script.google.com/macros/s/AKfycbxQGbOylDFwMrqk3rGZOf2i-k8cCLW21Lf8x_4NAG3PJ5EeHvO9VYezaqauloBKe4wA/exec" method="POST">
+                    <!-- Section 1: Design Authentication -->
+                    <div class="form-section active" data-section="1" style="--section-index: 1">
+                        <div class="section-header">
+                            <div class="section-title">Design Authentication</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Product Reference ID</label>
+                            <input type="text" 
+                                class="form-input" 
+                                id="productReferenceId"
+                                name="entry.PRODUCT_REF_ID"
+                                placeholder="e.g., REF_WD_002 - Filled Automatically"
+                                readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Product Name <span class="required">*</span></label>
+                            <input type="text" 
+                                class="form-input" 
+                                id="productNameInput"
+                                name="entry.PRODUCT_NAME"
+                                placeholder="Enter product name - Filled Automatically"
+                                required
+                                readonly>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Personal Identification -->
+                    <div class="form-section" data-section="2" style="--section-index: 2">
+                        <div class="section-header">
+                            <div class="section-title">Personal Identification</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Full Name <span class="required">*</span></label>
+                            <input type="text" 
+                                class="form-input" 
+                                name="entry.FULL_NAME"
+                                placeholder="Your full name"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email <span class="required">*</span></label>
+                            <input type="email" 
+                                class="form-input" 
+                                name="entry.EMAIL_ADDRESS"
+                                placeholder="your.email@example.com"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" 
+                                class="form-input" 
+                                name="entry.PHONE_NUMBER"
+                                placeholder="+1 (123) 456-7890">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Social Handle (IG, X, etc.)</label>
+                            <input type="text" 
+                                class="form-input" 
+                                name="entry.SOCIAL_HANDLE"
+                                placeholder="@username">
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Garment Specifications -->
+                    <div class="form-section" data-section="3" style="--section-index: 3">
+                        <div class="section-header">
+                            <div class="section-title">Garment Specifications</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Size Category <span class="required">*</span></label>
+                            <div class="option-group">
+                                <label class="option-label">
+                                    <input type="radio" 
+                                        class="option-input" 
+                                        name="entry.SIZE_CATEGORY"
+                                        value="Adult Fit"
+                                        required>
+                                    <span class="option-custom"></span>
+                                    <span class="option-text">Adult Fit</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" 
+                                        class="option-input" 
+                                        name="entry.SIZE_CATEGORY"
+                                        value="Youth/Child Fit"
+                                        required>
+                                    <span class="option-custom"></span>
+                                    <span class="option-text">Youth/Child Fit</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Size <span class="required">*</span></label>
+                            <div class="size-grid">
+                                <div class="size-option">
+                                    <input type="radio" 
+                                        class="size-input" 
+                                        id="size-xs" 
+                                        name="entry.SIZE"
+                                        value="XS"
+                                        required>
+                                    <label for="size-xs" class="size-label">XS</label>
+                                </div>
+                                <div class="size-option">
+                                    <input type="radio" 
+                                        class="size-input" 
+                                        id="size-s" 
+                                        name="entry.SIZE"
+                                        value="S"
+                                        required>
+                                    <label for="size-s" class="size-label">S</label>
+                                </div>
+                                <div class="size-option">
+                                    <input type="radio" 
+                                        class="size-input" 
+                                        id="size-m" 
+                                        name="entry.SIZE"
+                                        value="M"
+                                        required>
+                                    <label for="size-m" class="size-label">M</label>
+                                </div>
+                                <div class="size-option">
+                                    <input type="radio" 
+                                        class="size-input" 
+                                        id="size-l" 
+                                        name="entry.SIZE"
+                                        value="L"
+                                        required>
+                                    <label for="size-l" class="size-label">L</label>
+                                </div>
+                                <div class="size-option">
+                                    <input type="radio" 
+                                        class="size-input" 
+                                        id="size-xl" 
+                                        name="entry.SIZE"
+                                        value="XL"
+                                        required>
+                                    <label for="size-xl" class="size-label">XL</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Design Notes (Optional)</label>
+                            <textarea class="form-input form-textarea" 
+                                    name="entry.DESIGN_NOTES"
+                                    placeholder="Any specific thoughts about this design or embroidery placement..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: System Protocol -->
+                    <div class="form-section" data-section="4" style="--section-index: 4">
+                        <div class="section-header">
+                            <div class="section-title">System Protocol</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Acquisition Method <span class="required">*</span></label>
+                            <div class="option-group">
+                                <label class="option-label">
+                                    <input type="radio" 
+                                        class="option-input" 
+                                        name="entry.ACQUISITION_METHOD"
+                                        value="Local Pickup"
+                                        required>
+                                    <span class="option-custom"></span>
+                                    <span class="option-text">Local Pickup</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" 
+                                        class="option-input" 
+                                        name="entry.ACQUISITION_METHOD"
+                                        value="Standard delivery"
+                                        required>
+                                    <span class="option-custom"></span>
+                                    <span class="option-text">Standard delivery</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Shipping Address (only for standard shipping)</label>
+                            <textarea class="form-input form-textarea" 
+                                    name="entry.SHIPPING_ADDRESS"
+                                    placeholder="Full shipping address..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Payment Preference <span class="required">*</span></label>
+                            <div class="option-group">
+                                <label class="option-label">
+                                    <input type="radio" 
+                                        class="option-input" 
+                                        name="entry.PAYMENT_PREFERENCE"
+                                        value="Cash"
+                                        required>
+                                    <span class="option-custom"></span>
+                                    <span class="option-text">Cash</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" 
+                                        class="option-input" 
+                                        name="entry.PAYMENT_PREFERENCE"
+                                        value="Bank Transfer"
+                                        required>
+                                    <span class="option-custom"></span>
+                                    <span class="option-text">Bank Transfer</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="option-label">
+                                <input type="checkbox" 
+                                    class="option-input" 
+                                    name="entry.PROTOCOL_ACKNOWLEDGEMENT"
+                                    value="Yes"
+                                    required>
+                                <span class="option-custom"></span>
+                                <span class="option-text">I acknowledge the LØMEN Protocol for garment care and shipping</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="productPriceInput" name="entry.UNIT_PRICE" value="">
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Submit Order</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="footer-top">
+          <div class="footer-col">
+              <h2 class="footer-logo">LØMEN</h2>
+              <p class="footer-slogan">Localized Luxury Embroidery</p>
+              <a href="YOUR_CUSTOM_FORM_LINK" class="footer-custom-btn">CUSTOM WORK?</a>
+          </div>
+
+          <div class="footer-col">
+              <h3 class="footer-label">Navigation</h3>
+              <ul class="footer-links">
+                  <li><a href="archive.html">Archive</a></li>
+                  <li><a href="identity.html">Identity</a></li>
+                  <li><a href="protocol.html">Protocol</a></li>
+              </ul>
+          </div>
+
+          <div class="footer-col">
+              <h3 class="footer-label">Services</h3>
+              <ul class="footer-links">
+                  <li><a href="protocol.html#care">Garment Care</a></li>
+                  <li><a href="protocol.html#shipping">Local Pickup</a></li>
+                  <li><a href="mailto:contact@lomen.com">Inquiries</a></li>
+              </ul>
+          </div>
+
+          <div class="footer-col">
+              <h3 class="footer-label">About</h3>
+              <ul class="footer-links">
+                  <li><a href="identity.html#manifesto">Manifesto</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms</a></li>
+              </ul>
+          </div>
+        </div>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <div class="footer-bottom">
+          <div class="footer-socials">
+            <a href="#" class="social-circle" aria-label="Instagram">IG</a>
+            <a href="#" class="social-circle" aria-label="Telegram">TG</a>
+            <a href="#" class="social-circle" aria-label="X">X</a>
+          </div>
+          <p class="copyright">&copy; 2025 LØMEN. All rights reserved.</p>
+        </div>
+      </footer>
+      <script src="script.js"></script>
+      
+  </body>
+</html>
